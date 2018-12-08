@@ -33,6 +33,10 @@ class PostsController < ApplicationController
     redirect_to root_path
   end
 
+  def about
+    render 'about.html.erb'
+  end
+
   private
     def set_post
       @post = Post.find(params[:id])
