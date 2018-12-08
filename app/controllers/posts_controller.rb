@@ -5,14 +5,14 @@ class PostsController < ApplicationController
   end
 
 
-  
+
   def show
   end
 
   def new
-    binding.pry
+   
     @post = current_user.posts.new
-    # render partial: "form"
+    render partial: "form"
   end
  
   def create
