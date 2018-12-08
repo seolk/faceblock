@@ -11,7 +11,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.new
     render partial: "form"
   end
-
+ 
   def create
     
     @post = current_user.posts.new(post_params)
@@ -35,16 +35,12 @@ class PostsController < ApplicationController
       render :edit
     end
   end
-
+ 
   def destroy
     @post.destroy
     redirect_to posts_path
   end
-
-  def about
-    render 'about.html.erb'
-  end
-
+ 
   private
     def post_params
     params.require(:post).permit(:content)
