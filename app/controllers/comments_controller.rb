@@ -1,6 +1,14 @@
 class CommentsController < ApplicationController
   before_action :set_post
-  before_action :set_comment, only: [:edit, :destroy]
+  before_action :set_comment, only: [:show, :update, :edit, :destroy]
+
+  def index
+    @comments = @post.comments
+  end
+
+  def show
+
+  end
 
   def new
     @comment = @post.comments.new

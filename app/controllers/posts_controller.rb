@@ -8,17 +8,17 @@ class PostsController < ApplicationController
   end
 
   def new
+    binding.pry
     @post = current_user.posts.new
-    render partial: "form"
+    # render partial: "form"
   end
  
   def create
     
     @post = current_user.posts.new(post_params)
     if @post.save
-      redirect_to @post
+      redirect_to root_path
     else
-      flash[:success] = "Failed"
       render :new
     end
   end
