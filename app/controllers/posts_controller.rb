@@ -9,13 +9,14 @@ class PostsController < ApplicationController
 
   def new
     @post = current_user.posts.new
+    render partial: "form"
   end
 
   def create
     
     @post = current_user.posts.new(post_params)
     if @post.save
-      redirect_to post_path(@posts.id)
+      redirect_to @post
     else
       flash[:success] = "Failed"
       render :new
@@ -29,7 +30,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to posts_path
+      redirect_to @post
     else
       render :edit
     end
@@ -37,7 +38,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to roots_path
+    redirect_to posts_path
   end
 
   def about

@@ -5,5 +5,10 @@
 <div class="ui divider"></div>
 
 <% @posts.each do |post| %>
-    <%= link_to post.content, post %><br />
+    <%= link_to post.content, post %></br></br></br>
+    <%= link_to 'edit post', edit_post_path(post), class: "ui violet basic button" %>
+    <%= link_to 'delete post', post_path(post), method: :delete, class: "ui red basic button" %>
+    <div class = "ui divider"></div>
+    
+
 <% end %>
