@@ -1,6 +1,10 @@
 <h1>Posts</h1>
 <%= link_to 'Go Back', posts_path, class: 'ui red basic button' %>
 
-<h3><%= @post.content%> </h3>
+<h3><%= @post.content %> </h3>
 
-<div> Post your comment: </div>
+<% @post.comments.each do |comment| %>
+    <%= link_to comment.body, comment %>
+<% end %>
+
+<div> <%= link_to 'Add Comment', new_post_comment_path(@post.id) %></div>

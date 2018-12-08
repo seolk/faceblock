@@ -3,18 +3,24 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: [:edit, :destroy]
 
   def new
-    @comment = Comment.new
-    # form
+    @comment = @post.comments.new
+    render partial: "form"
   end
 
   def create
+    binding.pry
     @comment = @post.comments.new(comment_params)
+    if @comment.save
+      redirect_to @post
+    else
+      render :new
+    end
   end
 
   def edit
   end
 
-  def destory
+  def destroy
     @comment.destroy
     redirect_to post_path
   end
@@ -25,11 +31,16 @@ class CommentsController < ApplicationController
     end
 
     def set_post
-      @post = Post.find(params[:post_id])
+      @post = current_user.posts.find(params[:post_id])
     end
     
     def set_comment
-      @post = current_user.posts.find(params[:id])
+      @comment = @post.comments.find(params[:id])
     end
 
 end
+# <%= fields_for @comment do |u| %>
+#     <%= u.label :entry %>
+#     <%= u.text_area :body %>
+#     <%= u.submit "Submit" %>
+# <% end %>

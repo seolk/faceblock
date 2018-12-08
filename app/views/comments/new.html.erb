@@ -1,2 +1,6 @@
-<h1>Comments#new</h1>
-<p>Find me in app/views/comments/new.html.erb</p>
+<%= form_with(model: @person, class: 'ui form') do |f| %>
+    <%= f.label :body %>
+    <%= f.text_field :body, required: true %>
+    <br />
+    <%= f.submit nil, class: 'ui button primary' %>
+  <% end %>
