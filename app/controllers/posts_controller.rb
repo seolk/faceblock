@@ -4,6 +4,8 @@ class PostsController < ApplicationController
     @posts = current_user.posts.all
   end
 
+
+  
   def show
   end
 
